@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="broadlyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="appointment_data">
+    <Key>
+      <PropertyRef Name="appointment_id" />
+    </Key>
+    <Property Name="appointment_id" Type="Int32" Nullable="false" />
+    <Property Name="patient_id" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="scheduled" Type="DateTime" />
+    <Property Name="updatedAt" Type="DateTime" />
+    <NavigationProperty Name="patient_data" Relationship="Self.patient_id" FromRole="appointment_data" ToRole="patient_data" />
+  </EntityType>
+  <EntityType Name="patient_data">
+    <Key>
+      <PropertyRef Name="patient_id" />
+    </Key>
+    <Property Name="patient_id" Type="Int32" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="age" Type="Int32" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="appointment_data" Relationship="Self.patient_id" FromRole="patient_data" ToRole="appointment_data" />
+  </EntityType>
+  <Association Name="patient_id">
+    <End Role="patient_data" Type="Self.patient_data" Multiplicity="1" />
+    <End Role="appointment_data" Type="Self.appointment_data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patient_data">
+        <PropertyRef Name="patient_id" />
+      </Principal>
+      <Dependent Role="appointment_data">
+        <PropertyRef Name="patient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="broadlyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="appointment_data" EntityType="Self.appointment_data" />
+    <EntitySet Name="patient_data" EntityType="Self.patient_data" />
+    <AssociationSet Name="patient_id" Association="Self.patient_id">
+      <End Role="patient_data" EntitySet="patient_data" />
+      <End Role="appointment_data" EntitySet="appointment_data" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

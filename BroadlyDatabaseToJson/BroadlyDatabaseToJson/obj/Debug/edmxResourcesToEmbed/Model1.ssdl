@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="broadlyModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="appointment_data">
+    <Key>
+      <PropertyRef Name="appointment_id" />
+    </Key>
+    <Property Name="appointment_id" Type="int" Nullable="false" />
+    <Property Name="patient_id" Type="int" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="scheduled" Type="datetime" Precision="0" />
+    <Property Name="updatedAt" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="patient_data">
+    <Key>
+      <PropertyRef Name="patient_id" />
+    </Key>
+    <Property Name="patient_id" Type="int" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="age" Type="int" />
+    <Property Name="phone" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="patient_id">
+    <End Role="patient_data" Type="Self.patient_data" Multiplicity="1" />
+    <End Role="appointment_data" Type="Self.appointment_data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patient_data">
+        <PropertyRef Name="patient_id" />
+      </Principal>
+      <Dependent Role="appointment_data">
+        <PropertyRef Name="patient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="broadlyModelStoreContainer">
+    <EntitySet Name="appointment_data" EntityType="Self.appointment_data" Schema="broadly" store:Type="Tables" />
+    <EntitySet Name="patient_data" EntityType="Self.patient_data" Schema="broadly" store:Type="Tables" />
+    <AssociationSet Name="patient_id" Association="Self.patient_id">
+      <End Role="patient_data" EntitySet="patient_data" />
+      <End Role="appointment_data" EntitySet="appointment_data" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
