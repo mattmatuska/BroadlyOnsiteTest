@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BroadlyDatabaseToJson
 {
     /// <summary>
-    /// Straightforward Transaction representation.  
+    /// POCO Transaction.  
     /// </summary>
     public class Transaction
     {

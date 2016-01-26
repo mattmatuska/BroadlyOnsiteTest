@@ -14,7 +14,7 @@ namespace BroadlyDatabaseToJson
             DataSource source = DataSource.Instance; 
             var orders = source.GetDataOrders(DateTime.Now);
             DataSink sink = DataSink.Instance;
-            sink.Send(orders);
+            sink.Sink(orders);
 
             Console.ReadKey();
         }

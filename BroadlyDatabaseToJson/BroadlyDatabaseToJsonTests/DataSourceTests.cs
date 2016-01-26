@@ -19,30 +19,30 @@ namespace BroadlyDatabaseToJson.Tests
             List<appointment_data> appts = GetFakeAppointments();
             List<patient_data> patients = GetFakePatients();
 
-            var mock_appts = new Mock<DbSet<appointment_data>>();
-            mock_appts.As<IQueryable<appointment_data>>().Setup(m => m.Provider)
-                .Returns(appts.AsQueryable<appointment_data>().Provider);
-            mock_appts.As<IQueryable<appointment_data>>().Setup(m => m.Expression)
-                .Returns(appts.AsQueryable<appointment_data>().Expression);
-            mock_appts.As<IQueryable<appointment_data>>().Setup(m => m.ElementType)
-                .Returns(appts.AsQueryable<appointment_data>().ElementType);
-            mock_appts.As<IQueryable<appointment_data>>().Setup(m => m.GetEnumerator())
-                .Returns(appts.AsQueryable<appointment_data>().GetEnumerator());
+            //var mock_appts = new Mock<DbSet<appointment_data>>();
+            //mock_appts.As<IQueryable<appointment_data>>().Setup(m => m.Provider)
+            //    .Returns(appts.AsQueryable<appointment_data>().Provider);
+            //mock_appts.As<IQueryable<appointment_data>>().Setup(m => m.Expression)
+            //    .Returns(appts.AsQueryable<appointment_data>().Expression);
+            //mock_appts.As<IQueryable<appointment_data>>().Setup(m => m.ElementType)
+            //    .Returns(appts.AsQueryable<appointment_data>().ElementType);
+            //mock_appts.As<IQueryable<appointment_data>>().Setup(m => m.GetEnumerator())
+            //    .Returns(appts.AsQueryable<appointment_data>().GetEnumerator());
 
-            var mock_patients = new Mock<DbSet<patient_data>>();
-            mock_patients.As<IQueryable<patient_data>>().Setup(m => m.Provider)
-                .Returns(patients.AsQueryable<patient_data>().Provider);
-            mock_patients.As<IQueryable<patient_data>>().Setup(m => m.Expression)
-                .Returns(patients.AsQueryable<patient_data>().Expression);
-            mock_patients.As<IQueryable<patient_data>>().Setup(m => m.ElementType)
-                .Returns(patients.AsQueryable<patient_data>().ElementType);
-            mock_patients.As<IQueryable<patient_data>>().Setup(m => m.GetEnumerator())
-                .Returns(patients.AsQueryable<patient_data>().GetEnumerator());
+            //var mock_patients = new Mock<DbSet<patient_data>>();
+            //mock_patients.As<IQueryable<patient_data>>().Setup(m => m.Provider)
+            //    .Returns(patients.AsQueryable<patient_data>().Provider);
+            //mock_patients.As<IQueryable<patient_data>>().Setup(m => m.Expression)
+            //    .Returns(patients.AsQueryable<patient_data>().Expression);
+            //mock_patients.As<IQueryable<patient_data>>().Setup(m => m.ElementType)
+            //    .Returns(patients.AsQueryable<patient_data>().ElementType);
+            //mock_patients.As<IQueryable<patient_data>>().Setup(m => m.GetEnumerator())
+            //    .Returns(patients.AsQueryable<patient_data>().GetEnumerator());
 
 
             var fake_entities = new Mock<broadlyEntities>();
-            fake_entities.Setup(c => c.appointment_data).Returns(mock_appts.Object);
-            fake_entities.Setup(c => c.patient_data).Returns(mock_patients.Object);
+            //fake_entities.Setup(c => c.appointment_data).Returns(mock_appts.Object);
+            //fake_entities.Setup(c => c.patient_data).Returns(mock_patients.Object);
 
             DateTime compare_date = new DateTime(2016, 1, 26);
 
