@@ -10,41 +10,32 @@ using System.Web.Helpers;
 namespace BroadlyDatabaseToJson
 {
     /// <summary>
-    /// 
+    /// Sink for the data-- send it out of the system into wherever it's going. 
+    /// In the future, depending on usage, this may become a Singleton instead of a static class. 
+    /// But, at the moment the publishing is straightforward.
     /// </summary>
-    public sealed class DataSink
+    public static class DataSink
     {
-        private static volatile DataSink instance;
-        private static object syncRoot = new Object();
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        static DataSink() { }
 
-        private DataSink() { }
-
-        public static DataSink Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                            instance = new DataSink();
-                    }
-                }
-
-                return instance;
-            }
-        }
-
-        public void Sink(object PublishingItem)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ContentObject">The object to publish.</param>
+        /// <param name="uri">An uri at which to post the content.</param>
+        public static void Sink(object ContentObject, Uri uri)
         {
             try
             {
+                // didn't use the built-in encoder because it doesn't convert the date properly. 
                 //string coded_item = System.Web.Helpers.Json.Encode(PublishingItem);
-                string coded_item = Newtonsoft.Json.JsonConvert.SerializeObject(PublishingItem);
-                SendHttpRequest(coded_item);
+                string content_as_json = Newtonsoft.Json.JsonConvert.SerializeObject(ContentObject);
+                SendHttpRequest(content_as_json, uri);
 
-                Console.WriteLine(coded_item);
+                Console.WriteLine(content_as_json);
             }
             catch (Exception e)
             {
@@ -52,26 +43,26 @@ namespace BroadlyDatabaseToJson
             }
         }
 
-        static void SendHttpRequest(string content)
+        /// <summary>
+        /// Posts data via HTTP request.
+        /// </summary>
+        /// <param name="content">Content to post.</param>
+        /// <param name="uri">An uri at which to post the content.</param>
+        /// <returns></returns>
+        private static string SendHttpRequest(string content, Uri uri)
         {
-            string result = MakeRequest(content);
-            // Console.WriteLine(result);
-        }
-
-        private static string MakeRequest(string content)
-        {
-            // pulled some from: 
+            // Used an answer from here for the basis of this: 
             // http://stackoverflow.com/questions/5527316/how-to-set-the-content-of-an-httpwebrequest-in-c
-            UriBuilder uri = new UriBuilder("http://requestb.in/suik15su");
 
             HttpContent stringContent = new StringContent(content);
             using (var client = new HttpClient())
             {
-                var response = client.PostAsync(uri.Uri, stringContent).Result;
+                var response = client.PostAsync(uri, stringContent).Result;
                 if (!response.IsSuccessStatusCode)
                 {
-                    return null;
+                    return "";
                 }
+
                 return response.Content.ReadAsStringAsync().Result;
             }
         }

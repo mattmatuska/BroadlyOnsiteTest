@@ -20,4 +20,6 @@ C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJson\bin\Debug\System.Web.WebP
 C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJson\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJson\obj\Debug\BroadlyDatabaseToJson.exe
 C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJson\obj\Debug\BroadlyDatabaseToJson.pdb
+C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJson\bin\Debug\BroadlyDatabaseToJson.exe.CodeAnalysisLog.xml
+C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJson\bin\Debug\BroadlyDatabaseToJson.exe.lastcodeanalysissucceeded
 C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJson\obj\Debug\BroadlyDatabaseToJson.csprojResolveAssemblyReference.cache

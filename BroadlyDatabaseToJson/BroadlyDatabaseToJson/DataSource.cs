@@ -15,14 +15,19 @@ using System.Data.Entity;
 
 namespace BroadlyDatabaseToJson
 {
+    /// <summary>
+    /// Singleton DataSource object.  Contains a reference to broadlyEntities object which is lazily instantiated,
+    /// although that's not much of an issue with this app. 
+    /// </summary>
     public class DataSource
     {
+
 
         private static DataSource instance;
 
         private static broadlyEntities db_entities;
 
-        private DataSource()
+        static DataSource()
         {
             
         }
@@ -44,25 +49,25 @@ namespace BroadlyDatabaseToJson
         /// </summary>
         /// <param name="SearchDate"></param>
         /// <returns></returns>
-        public IEnumerable GetDataOrders(DateTime SearchDate)
+        public IEnumerable<Transaction> GetTransactions(DateTime SearchDate)
         {
             if (db_entities == null)
             {
                 db_entities = new broadlyEntities();
             }
 
-            return GetDataOrders(SearchDate, db_entities);
+            return GetTransactions(SearchDate, db_entities);
         }
 
         /// <summary>
-        /// Get data order objects.
+        /// Get Transactions from a search date and our database.  Public for the purposes of unit testing. 
         /// </summary>
-        /// <param name="SearchDate"></param>
-        /// <param name="DbEntities"></param>
+        /// <param name="SearchDate">The date to look for completed transactions.</param>
+        /// <param name="DbEntities">The representation of the database.</param>
         /// <returns></returns>
-        public IEnumerable GetDataOrders(DateTime SearchDate, broadlyEntities DbEntities)
+        public static IEnumerable<Transaction> GetTransactions(DateTime SearchDate, broadlyEntities DbEntities)
         {
-            IEnumerable load = null;
+            IEnumerable<Transaction> load = null;
             try
             {
                 // This can be written in one string I think. 

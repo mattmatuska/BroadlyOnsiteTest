@@ -1,4 +1,3 @@
-C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\obj\Debug\BroadlyDatabaseToJsonTests.csprojResolveAssemblyReference.cache
 C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\bin\Debug\BroadlyDatabaseToJsonTests.dll.config
 C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\bin\Debug\BroadlyDatabaseToJsonTests.dll
 C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\bin\Debug\BroadlyDatabaseToJsonTests.pdb
@@ -15,5 +14,8 @@ C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\bin\Debug\EntityFram
 C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\bin\Debug\Moq.xml
 C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\bin\Debug\EntityFramework.xml
 C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\bin\Debug\Newtonsoft.Json.xml
+C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\obj\Debug\BroadlyDatabaseToJsonTests.csprojResolveAssemblyReference.cache
 C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\obj\Debug\BroadlyDatabaseToJsonTests.dll
 C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\obj\Debug\BroadlyDatabaseToJsonTests.pdb
+C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\bin\Debug\BroadlyDatabaseToJsonTests.dll.CodeAnalysisLog.xml
+C:\Broadly\BroadlyDatabaseToJson\BroadlyDatabaseToJsonTests\bin\Debug\BroadlyDatabaseToJsonTests.dll.lastcodeanalysissucceeded
